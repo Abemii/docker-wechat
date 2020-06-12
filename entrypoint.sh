@@ -16,7 +16,7 @@ su wechat <<EOF
    sleep 300
 EOF
 
-while test -n "`pidof WeChat.exe`"
+while test -n "`pidof WXWork.exe`"
 do
     sleep 60
 done

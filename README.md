@@ -30,13 +30,13 @@ audio:x:63:
 version: '2'
 services:
   wechat:
-    image: bestwu/wechat
-    container_name: wechat
+    image: wxwork
+    container_name: wxwork
     devices:
       - /dev/snd
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix
-      - $HOME/WeChatFiles:/WeChatFiles
+      - $HOME/WXWorkFiles:/WeChatFiles
     environment:
       - DISPLAY=unix$DISPLAY
       - QT_IM_MODULE=fcitx
@@ -50,9 +50,9 @@ services:
 或
 
 ```bash
-    docker run -d --name wechat --device /dev/snd \
+    docker run -d --name wxwork --device /dev/snd \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
-    -v $HOME/WeChatFiles:/WeChatFiles \
+    -v $HOME/WXWorkFiles:/WeChatFiles \
     -e DISPLAY=unix$DISPLAY \
     -e XMODIFIERS=@im=fcitx \
     -e QT_IM_MODULE=fcitx \
@@ -60,5 +60,11 @@ services:
     -e AUDIO_GID=`getent group audio | cut -d: -f3` \
     -e GID=`id -g` \
     -e UID=`id -u` \
-    bestwu/wechat
+    wxwork
+```
+
+## Build image
+
+```bash
+docker build -t wxwork .
 ```
